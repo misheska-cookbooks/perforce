@@ -43,8 +43,6 @@ remote_file p4d_local_path do
   mode 0755
 end
 
-group = root_group
-
 directory node['perforce']['p4d']['p4root'] do
   recursive true
   owner node['perforce']['p4d']['user']

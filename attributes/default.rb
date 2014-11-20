@@ -11,4 +11,3 @@ default['perforce']['p4d']['p4journal'] = '/var/log/p4d/journal'
 default['perforce']['p4d']['p4log'] = '/var/log/p4d/p4err'
 
 default['perforce']['p4port'] = '1666'
-
