@@ -10,4 +10,5 @@ default['perforce']['p4d']['p4journal'] = '/var/log/p4d/journal'
 # Name and path of the file to which Perforce errors are written
 default['perforce']['p4d']['p4log'] = '/var/log/p4d/p4err'
 
-default['perforce']['p4port'] = '1666'
+default['perforce']['p4port'] = 'localhost:1666'
+default['perforce']['version'] = '14.2'
