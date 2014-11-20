@@ -15,4 +15,5 @@ suites:
   - name: server
     run_list:
       - recipe[perforce::p4d]
+      - recipe[perforce::p4]
     attributes:

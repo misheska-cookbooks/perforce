@@ -26,19 +26,19 @@ module Perforce
     end
 
     def get_p4d_url(version)
-      "ftp://ftp.perforce.com/perforce/r#{version}/#{get_p4_os_directory}/p4d"
+      "ftp://ftp.perforce.com/perforce/r#{version}/#{p4_os_directory}/p4d"
     end
 
     def get_p4v_url(version)
       "ftp://ftp.perforce.com/perforce/r#{version}/"\
-      "#{get_p4_os_directory}/p4vinst64.exe"
+      "#{p4_os_directory}/p4vinst64.exe"
     end
 
     def get_p4_url(version)
       case node['os']
       when 'linux'
         return "ftp://ftp.perforce.com/perforce/r#{version}"\
-               "/#{get_p4_os_directory}/p4"
+               "/#{p4_os_directory}/p4"
       end
     end
 
