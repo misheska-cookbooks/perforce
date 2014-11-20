@@ -1,4 +1,5 @@
 # perforce
+[![wercker status](https://app.wercker.com/status/03f6d175c20c0148e52b8a2d880368ee/m "wercker status")](https://app.wercker.com/project/bykey/03f6d175c20c0148e52b8a2d880368ee)
 
 This cookbook can be used to install and manage the Perforce source code
 management system.
