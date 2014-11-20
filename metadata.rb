@@ -1,0 +1,7 @@
+name             'perforce'
+maintainer       'Mischa Taylor'
+maintainer_email 'mischa@misheska.com'
+license          'Apache 2.0'
+description      'Installs/Configures perforce'
+long_description 'Installs/Configures perforce'
+version          '0.1.0'

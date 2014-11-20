@@ -1,0 +1,67 @@
+# !/bin/bash
+#
+# Init file for Perforce Server (p4d)
+
+prog = p4d
+
+# chkconfig: 345 99 10
+# description: Perforce Server (p4d)
+# processname: $prog
+# config: /etc/sysconfig/$prog
+ 
+# source function library
+if [ -f /etc/init.d/functions ]; then
+  . /etc/init.d/functions
+elif [ -f /etc/rc.d/init.d/functions ]; then
+  . /etc/rc.d/init.d/functions
+else
+ exit 0
+fi
+
+# pull in sysconfig settings
+[ -f /etc/sysconfig/$prog ] && . /etc/sysconfig/$prog || exit 0 
+ 
+ 
+start() {
+  status $prog > /dev/null 2>&1
+  if [ $? -ne 0 -a "$P4DCMD" != "" ]; then
+    echo -n $"Starting Perforce Server: "
+    daemon --user $P4USER $P4DCMD
+    RETVAL=$?
+    echo
+    [ "$RETVAL" = 0 ] && touch /var/lock/subsys/$prog
+  else
+    RETVAL=0
+  fi
+ 
+}
+ 
+stop() {
+  status $prog > /dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    echo -n $"Stopping Perforce Server: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ "$RETVAL" = 0 ] && rm -f /var/lock/subsys/$prog
+  fi
+}
+ 
+restart() {
+  stop
+  start
+}
+ 
+# See how we are called.
+case "$1" in
+  start)	start ;;
+  stop)		stop ;;
+  restart)	restart	;;
+  condrestart)	[ -f /var/lock/subsys/$prog ] && restart || : ;;
+  status)	status $prog ;;
+ 
+  *)		echo $"Usage: $0 {start|stop|restart|condrestart|status}"
+		exit 1
+esac
+ 
+exit $RETVAL

@@ -1,0 +1,14 @@
+#
+#
+P4D=/usr/local/bin/p4d
+P4ROOT="-r <%= @p4root %>"
+P4PORT=" -p <%= @p4port %>"
+LOG=" -L <%= @p4log %>"
+JOURNAL=" -J <%= @p4journal %>"
+DEBUG=" -v server=2"
+ 
+#  Comment out the following line to disable the
+#  Perforce server:
+#
+P4DCMD="$P4D $P4ROOT$P4PORT -d$LOG$JOURNAL$DEBUG"
+P4USER=<%= @p4user %>
