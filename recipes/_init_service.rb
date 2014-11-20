@@ -14,9 +14,10 @@ template "/etc/#{conf_dir}/p4d" do
   mode 0644
   variables(
     p4port: node['perforce']['p4port'],
-    p4root: node['perforce']['p4root'],
-    p4journal: node['perforce']['p4journal'],
-    p4log: node['perforce']['p4log']
+    p4root: node['perforce']['p4d']['p4root'],
+    p4journal: node['perforce']['p4d']['p4journal'],
+    p4log: node['perforce']['p4d']['p4log'],
+    p4user: node['perforce']['p4d']['user']
   )
   notifies :restart, 'service[p4d]', :delayed
 end
